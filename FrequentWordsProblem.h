@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <unordered_map>
+#include <vector>
 
 class FrequentWordsProblem
 {
@@ -19,9 +20,13 @@ public:
 
     std::string getWord(int index) const;
 
+    int getOccurances();
+
 private:
-    const std::string m_dna;
-    std::unordered_map<std::string, int> map;
+    const std::string m_dnaString;
+    std::unordered_map<std::string, int> m_map;
+    std::vector<std::string> m_wordsVector;
+    int m_maxCount;
 
 };
 

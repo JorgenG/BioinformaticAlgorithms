@@ -6,7 +6,7 @@
 
 FrequentWordsProblem::FrequentWordsProblem(std::string& dna)
 :
-    m_dna( dna )
+    m_dnaString( dna )
 {
 
 }
@@ -14,28 +14,48 @@ FrequentWordsProblem::FrequentWordsProblem(std::string& dna)
 int FrequentWordsProblem::calculateMostFrequentWords(int sizeOfWords)
 {
     std::string word;
-    for (int i = 0; i < m_dna.size() - sizeOfWords; ++i)
+    m_map.clear();
+    m_wordsVector.clear();
+
+    m_maxCount = 0;
+    for (int i = 0; i < m_dnaString.size() - sizeOfWords; ++i)
     {
-        word = m_dna.substr(i, sizeOfWords);
-        if( map.count(word) > 0 )
+        word = m_dnaString.substr(i, sizeOfWords);
+        if( m_map.count(word) > 0 )
         {
-            map.at(word)++;
+            auto current = ++m_map.at(word);
+            if( current > m_maxCount )
+            {
+                m_maxCount = current;
+            }
         }
         else
         {
-            map.insert( {word, 1} );
+            m_map.insert( {word, 1} );
+            if( m_maxCount < 1 )
+            {
+                m_maxCount = 1;
+            }
         }
     }
 
-    for( auto elem : map )
+    for( auto elem : m_map)
     {
-        std::cout << "Name: " << elem.first << " Count: " << elem.second << std::endl;
+        if( elem.second == m_maxCount )
+        {
+            m_wordsVector.insert( m_wordsVector.end(), elem.first );
+        }
     }
 
-    return 0;
+    return m_wordsVector.size();
 }
 
 std::string FrequentWordsProblem::getWord(int index) const
 {
-    return "test";
+    return m_wordsVector.at( index );
+}
+
+int FrequentWordsProblem::getOccurances()
+{
+    return m_maxCount;
 }

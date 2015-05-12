@@ -9,7 +9,10 @@ int main()
     FrequentWordsProblem problem(dna);
 
     int wordsFound = problem.calculateMostFrequentWords(4);
+    int occurances = problem.getOccurances();
 
+    std::cout << dna << std::endl;
+    std::cout << "Occurances: " << occurances << ", Words: ";
     for(int i = 0; i < wordsFound; i++ )
     {
         std::cout << problem.getWord(i) << " ";
