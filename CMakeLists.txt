@@ -4,4 +4,4 @@ project(BioinformaticsAlgorithms)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 set(SOURCE_FILES main.cpp)
-add_executable(BioinformaticsAlgorithms ${SOURCE_FILES} FrequentWordsProblem.cpp FrequentWordsProblem.h)
+add_executable(BioinformaticsAlgorithms ${SOURCE_FILES} FrequentWordsProblem.cpp FrequentWordsProblem.h ReverseComplement.cpp ReverseComplement.h)

@@ -1,14 +1,13 @@
 #include <iostream>
 
 #include "FrequentWordsProblem.h"
+#include "ReverseComplement.h"
 
-
-int main()
+void solveDna(std::string dna, int kmerSize )
 {
-    std::string dna("ACGTTGCATGTCGCATGATGCATGAGAGCT");
     FrequentWordsProblem problem(dna);
 
-    int wordsFound = problem.calculateMostFrequentWords(4);
+    int wordsFound = problem.calculateMostFrequentWords(kmerSize);
     int occurances = problem.getOccurances();
 
     std::cout << dna << std::endl;
@@ -18,5 +17,22 @@ int main()
         std::cout << problem.getWord(i) << " ";
     }
     std::cout << std::endl;
+}
+
+int main()
+{
+    // Frequent Words Problem
+    std::string dna("ACGTTGCATGTCGCATGATGCATGAGAGCT");
+    solveDna(dna, 4);
+    // Extra dataset
+    dna = "CGGAAGCGAGATTCGCGTGGCGTGATTCCGGCGGGCGTGGAGAAGCGAGATTCATTCAAGCCGGGAGGCGTGGCGTGGCGTGGCGTGCGGATTCAAGCCGGCGGGCGTGATTCGAGCGGCGGATTCGAGATTCCGGGCGTGCGGGCGTGAAGCGCGTGGAGGAGGCGTGGCGTGCGGGAGGAGAAGCGAGAAGCCGGATTCAAGCAAGCATTCCGGCGGGAGATTCGCGTGGAGGCGTGGAGGCGTGGAGGCGTGCGGCGGGAGATTCAAGCCGGATTCGCGTGGAGAAGCGAGAAGCGCGTGCGGAAGCGAGGAGGAGAAGCATTCGCGTGATTCCGGGAGATTCAAGCATTCGCGTGCGGCGGGAGATTCAAGCGAGGAGGCGTGAAGCAAGCAAGCAAGCGCGTGGCGTGCGGCGGGAGAAGCAAGCGCGTGATTCGAGCGGGCGTGCGGAAGCGAGCGG";
+    solveDna(dna, 12);
+
+    std::string dnaString("AAAACCCGGT");
+    ReverseComplement reverseComplementProblem(dnaString);
+
+    std::cout << dnaString << " transforms into " <<  reverseComplementProblem.getComplement() << std::endl;
+
+
     return 0;
 }
